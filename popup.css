@@ -1,0 +1,36 @@
+    /* Add styles for the form */
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px 0;
+    }
+
+    /* Add styles for the label */
+    label {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    /* Add styles for the input field */
+    input {
+        padding: 10px;
+        font-size: 16px;
+        width: 300px;
+    }
+
+    /* Add styles for the submit button */
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    /* Add styles for the p element */
+    p {
+        font-size: 18px;
+        margin: 10px 0;
+    }

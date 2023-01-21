@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NeftyBalance</title>
+  <script src="axios.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="popup.css">
+</head>
+<body>
+    <div>
+        <p id="walletName"></p>
+        <form>
+            <label>
+            Wallet Name:
+            <input type="text" id="inputWalletName" />
+            </label>
+            <button id="submitBtn">Submit</button>
+        </form>
+            <p id="balance"></p>
+    </div>
+    <script>
+      // Add click event listener to the submit button
+      document.getElementById("submitBtn").addEventListener("click", function(event) {
+        event.preventDefault(); // prevent form from submitting
+
+        // Get the input value
+        const walletName = document.getElementById("inputWalletName").value;
+        document.getElementById("walletName").innerHTML = "Current Wallet: " + walletName;
+      
+        // Use axios to send a request to the API
+        axios.get("https://wax.pink.gg/v1/chain/get_table_rows", {
+          params: {
+            code: "reward.nefty",
+            table: "claims",
+            scope: "reward.nefty",
+            lower_bound: walletName,
+            upper_bound: walletName,
+            limit: 1,
+            json: true
+          }
+        })
+        .then(function(response) {
+// Handle the API response
+if(response.data.rows.length>0) {
+const balance = response.data.rows[0].balance;
+document.getElementById("balance").innerHTML = "NEFTY Balance: " + balance + " NEFTY";
+} else {
+document.getElementById("balance").innerHTML = "NEFTY Balance: Not found";
+}
+}).catch(function (error) {
+console.log(error);
+});
+});
+</script>
+
+</body>
+</html>

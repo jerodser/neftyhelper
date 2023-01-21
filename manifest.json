@@ -1,0 +1,40 @@
+{
+    "manifest_version": 2,
+    "name": "NeftyHelper",
+    "version": "1.0",
+    "description": "A tool that changes Atomichub's Maker/Taker fee's to NeftyBlocks",
+    "icons": {
+        "48": "icon.png"
+      },
+    "permissions": [
+        "webRequest",
+        "webRequestBlocking",
+        "*://wax.atomichub.io/*",
+        "https://wax.pink.gg/*",
+        "storage",
+        "notifications"
+    ],
+    "browser_action": {
+        "default_icon": "icon.png",
+        "default_title": "WorkInProgress",
+        "default_popup": "popup.html",
+            "popup": {
+            "width": 500,
+            "height": 400
+            }
+    },
+    "web_accessible_resources": [
+        "main.js",
+        "main.css",
+        "popup.css",
+        "sec.css",
+        "banner.png"
+    ],
+    "background": {
+        "scripts": [
+        "background.js",
+        "axios.min.js"
+
+    ]
+    }
+}
