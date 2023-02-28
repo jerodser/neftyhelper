@@ -9,6 +9,7 @@
     "permissions": [
         "webRequest",
         "webRequestBlocking",
+        "tabs",
         "*://wax.atomichub.io/*",
         "https://wax.pink.gg/*",
         "storage",
@@ -28,11 +29,13 @@
         "main.css",
         "popup.css",
         "sec.css",
+        "config.js",
         "banner.png"
     ],
     "background": {
         "scripts": [
         "background.js",
+        "content.js",
         "axios.min.js"
 
     ]

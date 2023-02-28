@@ -1,15 +1,15 @@
-chrome.runtime.onMessage.addListener(
-  function(request, sender, sendResponse) {
-    if(request.replace){
-      var script = document.createElement('script');
-      script.src = chrome.extension.getURL('main.js');
-      script.onload = function() {
-          this.remove();
-          sendResponse({status: 'success'});
-      };
-      script.onerror = function(){
-        sendResponse({status: 'error'});
-      }
-      (document.head || document.documentElement).appendChild(script);
-    }
-  });
+// Find the main script tag
+var mainScript = document.querySelector('script[src^="/static/js/main."]');
+
+// Check if the main script tag is found
+if (mainScript) {
+  // Get the source URL of the main script tag
+  var src = mainScript.getAttribute('src');
+
+  // Check if the source URL matches the expected format
+  if (/\/main\.[a-zA-Z0-9]+\.bundle\.(js)$/.test(src)) {
+    // Remove the integrity and crossorigin attributes
+    mainScript.removeAttribute('integrity');
+    mainScript.removeAttribute('crossorigin');
+  }
+}
